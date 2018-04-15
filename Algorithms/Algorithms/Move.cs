@@ -19,13 +19,17 @@ namespace Algorithms
 
         direction directionOfSnek;
 
+        int maxX, maxY;
+
         int[] coordinate = { 0, 0 };
 
-        public Move()
+        public Move(int max_X, int max_Y)
         {
             directionOfSnek = direction.right;
-            coordinate[0] = 40;
+            coordinate[0] = 195;
             coordinate[1] = 40;
+            maxX = max_X;
+            maxY = max_Y;
         }
 
         public void changeCoordinates()
@@ -34,12 +38,12 @@ namespace Algorithms
             {
                 case direction.up:
                     {
-                        coordinate[1] = coordinate[1] + 1;
+                        coordinate[1] = coordinate[1] - 1;
                         break;
                     }
                 case direction.down:
                     {
-                        coordinate[1] = coordinate[1] - 1;
+                        coordinate[1] = coordinate[1] + 1;
                         break;
                     }
                 case direction.right:
@@ -55,11 +59,30 @@ namespace Algorithms
             }
         }
 
+        public void changeCoordinatesAtRim()
+        {
+            if (coordinate[0] == maxX)
+            {
+                coordinate[0] = 0;
+            }
+            if (coordinate[0] < 0)
+            {
+                coordinate[0] = maxX;
+            }
+            if (coordinate[1] == maxY)
+            {
+                coordinate[1] = 0;
+            }
+            if (coordinate[1] < 0)
+            {
+                coordinate[1] = maxY;
+            }
+        }
+
         public int[] getCoordinate()
         {
             return coordinate;
         }
-
 
         public void validateDirection(int newDirection)
         {
@@ -101,5 +124,6 @@ namespace Algorithms
                 return false;
             }
         }
+
     }
 }

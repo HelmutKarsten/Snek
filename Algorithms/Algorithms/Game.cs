@@ -8,12 +8,18 @@ namespace Algorithms
 {
     class Game
     {
-        Move Snek = new Move();
+        //variables
+        int speed;
+        Move Snek = new Move(200, 100);
         ConsoleKeyInfo cki;
+
+        public Game(int difficultyLevel)
+        {
+            initializeSpeed(difficultyLevel);
+        }
 
         public void runSnek()
         {
-
             while (true)
             {
                 // Check whether the user did some input
@@ -24,9 +30,13 @@ namespace Algorithms
                     cki = Console.ReadKey();
 
                     int passer = passDirectionChange(cki);
-                    if (passer != 100)
+                    if (passer != 100 && passer != 99)
                     {
                         Snek.validateDirection(passer);
+                    }
+                    else if (passer == 99)
+                    {
+                        continue;
                     }
                     else
                     {
@@ -41,10 +51,11 @@ namespace Algorithms
 
                     // Move according to the currrent user symbol speed
                     Snek.changeCoordinates();
+                    Snek.changeCoordinatesAtRim();
                     Console.Write(Snek.getCoordinate()[0] + ", ");
                     Console.WriteLine(Snek.getCoordinate()[1]);
                     // Wait some time
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(speed);
                 }
             }
         }
@@ -76,7 +87,12 @@ namespace Algorithms
                 return 100;
             }
 
-            return 100;
+            return 99;
+        }
+
+        private void initializeSpeed(int difficultyLevel)
+        {
+            speed = (11 - difficultyLevel) * 100;
         }
     }
 }

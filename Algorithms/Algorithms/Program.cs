@@ -10,7 +10,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Game session = new Game();
+            Game session = new Game(10);
 
             session.runSnek();
         }
