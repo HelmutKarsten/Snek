@@ -26,7 +26,7 @@ namespace Algorithms
         public Move(int max_X, int max_Y)
         {
             directionOfSnek = direction.right;
-            coordinate[0] = 195;
+            coordinate[0] = 40;
             coordinate[1] = 40;
             maxX = max_X;
             maxY = max_Y;
