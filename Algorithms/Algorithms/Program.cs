@@ -11,8 +11,10 @@ namespace Algorithms
         static void Main(string[] args)
         {
             Game session = new Game(10);
+            Menue menue = new Menue();
 
-            session.runSnek();
+            menue.runMenue();
+            //session.runSnek();
         }
     }
 }
