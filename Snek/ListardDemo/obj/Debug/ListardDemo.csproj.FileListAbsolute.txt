@@ -1,0 +1,5 @@
+C:\Users\fia72strack\Desktop\Snake\Snek\ListardDemo\bin\Debug\ListardDemo.exe
+C:\Users\fia72strack\Desktop\Snake\Snek\ListardDemo\bin\Debug\ListardDemo.pdb
+C:\Users\fia72strack\Desktop\Snake\Snek\ListardDemo\obj\Debug\ListardDemo.exe
+C:\Users\fia72strack\Desktop\Snake\Snek\ListardDemo\obj\Debug\ListardDemo.pdb
+C:\Users\fia72strack\Desktop\Snake\Snek\ListardDemo\obj\Debug\ListardDemo.csprojResolveAssemblyReference.cache

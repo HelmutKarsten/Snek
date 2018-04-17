@@ -1,0 +1,8 @@
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\Snek.exe.config
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\obj\Debug\Snek.csprojResolveAssemblyReference.cache
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\Snek.exe
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\Snek.pdb
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\obj\Debug\Snek.exe
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\obj\Debug\Snek.pdb
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\ListardDemo.exe
+C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\ListardDemo.pdb
