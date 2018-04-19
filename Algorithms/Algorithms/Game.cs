@@ -45,8 +45,8 @@ namespace Algorithms
                     // Move according to the currrent user symbol speed
                     Snek.changeCoordinates();
                     Snek.changeCoordinatesAtRim();
-                    Console.Write(Snek.getCoordinate()[0] + ", ");
-                    Console.WriteLine(Snek.getCoordinate()[1]);
+                    Console.Write(Snek.getCoordinate[0] + ", ");
+                    Console.WriteLine(Snek.getCoordinate[1]);
                     // Wait some time
                     System.Threading.Thread.Sleep(speed);
                 }
