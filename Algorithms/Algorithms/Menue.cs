@@ -8,16 +8,16 @@ namespace Algorithms
 {
     class Menue
     {
-        ConsoleKeyInfo cki;
-        int menueItem;
-        string[] menueText = { "Start Game", "Show Highscore", "About", "Exit" };
-        Boolean exit, playGame = false;
+        private ConsoleKeyInfo cki;
+        private int menueItem;
+        private string[] menueText = { "Start Game", "Show Highscore", "About", "Exit" };
+        private bool exit;
+        private bool playGame = false;
 
         public Menue()
         {
             menueItem = 0;
         }
-
         public void runMenue()
         {
             WriteMenueText();
@@ -45,12 +45,10 @@ namespace Algorithms
                 }
             }
         }
-
         public void Selection()
         {
             cki = Console.ReadKey();
         }
-
         private void WriteMenueText()
         {
             for(int i = 0; i < 4; i++)
@@ -58,22 +56,17 @@ namespace Algorithms
                 WriteSingleMenueItems(i);
             }
         }
-
         private void WriteSingleMenueItems(int iterator)
         {
             if (iterator == menueItem)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
-
             Console.WriteLine(menueText[iterator]);
-
             Console.BackgroundColor = ConsoleColor.Black;
         }
-
         private void menueIterator(ConsoleKeyInfo cki)
         {
-            
             if (cki.Key == ConsoleKey.DownArrow)
             {
                 menueItem++;
@@ -93,7 +86,6 @@ namespace Algorithms
                 playGame = true;
             }
         }
-
         private void checkForRimCase(int TopBottom)
         {
             if (TopBottom == 0 && CompairTwoItems(0, menueItem))
@@ -105,15 +97,9 @@ namespace Algorithms
                 menueItem = 0;
             }
         }
-
-        private Boolean CompairTwoItems(int firstItem, int secondItem)
+        private bool CompairTwoItems(int firstItem, int secondItem)
         {
-            if (firstItem > secondItem)
-            {
-                return true;
-            }
-
-            return false;
+            return (firstItem > secondItem);
         }
     }
 }

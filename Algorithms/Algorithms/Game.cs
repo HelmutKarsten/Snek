@@ -8,8 +8,8 @@ namespace Algorithms
 {
     class Game
     {
-        int speed = -1;
-        Move Snek = new Move(200, 100);
+        private int speed = -1;
+        private Move Snek = new Move(200, 100);
 
         public Game(int difficultyLevel)
         {
@@ -42,7 +42,6 @@ namespace Algorithms
                 else
                 {
                     // No user input - the gaming loop does a time step
-
                     // Move according to the currrent user symbol speed
                     Snek.changeCoordinates();
                     Snek.changeCoordinatesAtRim();
