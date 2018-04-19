@@ -263,3 +263,5 @@ __pycache__/
 #Ignoring some files which were not picked up by this file until now...wtf!?
  Algorithms/Algorithms/obj/Debug/Algorithms.csproj.FileListAbsolute.txt
 *.cache
+*.exe
+*.pdb
