@@ -8,16 +8,13 @@ namespace Algorithms
 {
     class Game
     {
-        //variables
-        int speed;
+        int speed = -1;
         Move Snek = new Move(200, 100);
-        ConsoleKeyInfo cki;
 
         public Game(int difficultyLevel)
         {
             initializeSpeed(difficultyLevel);
         }
-
         public void runSnek()
         {
             while (true)
@@ -26,10 +23,7 @@ namespace Algorithms
                 if (Console.KeyAvailable)
                 {
                     // User input - react to the users input
-
-                    cki = Console.ReadKey();
-
-                    int passer = passDirectionChange(cki);
+                    int passer = passDirectionChange(Console.ReadKey());
                     if (passer != 100 && passer != 99)
                     {
                         Snek.validateDirection(passer);
@@ -59,37 +53,24 @@ namespace Algorithms
                 }
             }
         }
-
         private int passDirectionChange(ConsoleKeyInfo pry)
         {
-            if (pry.Key == ConsoleKey.UpArrow)
+            switch (pry.Key)
             {
-                return 0;
+                case ConsoleKey.UpArrow:
+                    return 0;
+                case ConsoleKey.DownArrow:
+                    return 1;
+                case ConsoleKey.LeftArrow:
+                    return 2;
+                case ConsoleKey.RightArrow:
+                    return 3;
+                case ConsoleKey.X:
+                    return 100;
+                default:
+                    return 99;
             }
-
-            if (pry.Key == ConsoleKey.DownArrow)
-            {
-                return 1;
-            }
-
-            if (pry.Key == ConsoleKey.LeftArrow)
-            {
-                return 2;
-            }
-
-            if (pry.Key == ConsoleKey.RightArrow)
-            {
-                return 3;
-            }
-
-            if (pry.Key == ConsoleKey.X)
-            {
-                return 100;
-            }
-
-            return 99;
         }
-
         private void initializeSpeed(int difficultyLevel)
         {
             speed = (11 - difficultyLevel) * 100;

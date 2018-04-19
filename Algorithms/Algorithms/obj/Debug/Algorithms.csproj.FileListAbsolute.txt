@@ -11,3 +11,6 @@ C:\Users\fia72strack\Desktop\Snek\Algorithms\Algorithms\obj\Debug\Algorithms.pdb
 C:\Users\fia72strack\Desktop\Snek\Algorithms\Algorithms\bin\Debug\Algorithms.exe
 C:\Users\fia72strack\Desktop\Snek\Algorithms\Algorithms\bin\Debug\Algorithms.pdb
 C:\Users\fia72strack\Desktop\Snek\Algorithms\Algorithms\obj\Debug\Algorithms.csprojResolveAssemblyReference.cache
+C:\Users\Kai\Documents\GitHub\Snek\Algorithms\Algorithms\bin\Debug\Algorithms.exe.config
+C:\Users\Kai\Documents\GitHub\Snek\Algorithms\Algorithms\obj\Debug\Algorithms.exe
+C:\Users\Kai\Documents\GitHub\Snek\Algorithms\Algorithms\obj\Debug\Algorithms.pdb
