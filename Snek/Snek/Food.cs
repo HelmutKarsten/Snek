@@ -13,14 +13,17 @@ namespace Snek
         char shape;
         int posX;
         int posY;
+        int maxPosX, maxPosY;
 
         Random random = new Random();
 
-        public Food(int type)
+        public Food(int type, int width, int length)
         {
             this.growthFactor = 1;
             this.scoreFactor = getScoreFactor(type);
             this.shape = getShape(type);
+            this.maxPosX = width - 1;
+            this.maxPosY = length - 1;
         }
 
         public int getScoreFactor(int type)
@@ -47,12 +50,18 @@ namespace Snek
             return shape;
         }
 
+        public int[] getPosition()
+        {
+            int[] coordinate = { getPosX(), getPosY() };
+            return coordinate;
+        }
+
         public void setPosX()
         {
-            posX = random.Next(80);
+            posX = random.Next(maxPosX);
         }
         
-        public int getPosX()
+        private int getPosX()
         {
             setPosX();
 
@@ -61,14 +70,19 @@ namespace Snek
 
         public void setPosY()
         {
-            posY = random.Next(40);
+            posY = random.Next(maxPosY);
         }
 
-        public int getPosY()
+        private int getPosY()
         {
             setPosY();
 
             return posY;
+        }
+
+        public int getGrowthFactor()
+        {
+            return growthFactor;
         }
     }
 }

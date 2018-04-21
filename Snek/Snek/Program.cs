@@ -10,13 +10,9 @@ namespace Snek
     {
         static void Main(string[] args)
         {
-            Field field = new Field();
-            Food food = new Food(0);
+            Game field = new Game(10);
             field.windowStart();
-            Console.WriteLine(food.getShape(0));
-            field.ShowSymbol(food.getShape(1), food.getPosX(), food.getPosY(), ConsoleColor.Black);
-            field.drawSnek();
-            field.windowClose();
+            field.runSnek();
             
         }
     }

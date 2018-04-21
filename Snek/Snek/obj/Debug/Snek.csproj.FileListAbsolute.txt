@@ -6,3 +6,12 @@ C:\Users\fia72strack\Desktop\Snake\Snek\Snek\obj\Debug\Snek.exe
 C:\Users\fia72strack\Desktop\Snake\Snek\Snek\obj\Debug\Snek.pdb
 C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\ListardDemo.exe
 C:\Users\fia72strack\Desktop\Snake\Snek\Snek\bin\Debug\ListardDemo.pdb
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\bin\Debug\Snek.exe.config
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\bin\Debug\Snek.exe
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\bin\Debug\Snek.pdb
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\bin\Debug\ListardDemo.exe
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\bin\Debug\ListardDemo.pdb
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\obj\Debug\Snek.csprojResolveAssemblyReference.cache
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\obj\Debug\Snek.csproj.CoreCompileInputs.cache
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\obj\Debug\Snek.exe
+C:\Users\hk\Desktop\Schule\ANW\Snek\Snek\Snek\obj\Debug\Snek.pdb

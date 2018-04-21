@@ -9,8 +9,8 @@ namespace Snek
 {
     class Snek
     {
-        int initLocationX = 50;
-        int initLocationY = 50;
+        int initLocationX = 40;
+        int initLocationY = 40;
         Listard<int[]> corpus = new Listard<int[]>();
         int[] theArray = new int[2] {0,0};
 
@@ -38,7 +38,7 @@ namespace Snek
             return corpus.getCount();
         }
 
-        private int[] saveSnekLocation(int locX, int locY)
+        public int[] saveSnekLocation(int locX, int locY)
         {
             int[] array = new int[2] {locX, locY};
             return array;
@@ -49,6 +49,23 @@ namespace Snek
             return corpus[partOfCorpus];
         }
 
+        public void setCorpusPart(int partOfCorpus, int[] Coordinate)
+        {
+            corpus.Set(Coordinate, partOfCorpus);
+        }
+
+        public void addCorpusPart(int partOfCorpus, int[] Coordinate)
+        {
+            corpus.InsertAt(Coordinate, partOfCorpus);
+        }
+
+        public void letItGrow()
+        {
+            int[] corpusPartOne = getCorpusPart(0);
+            //corpus.InsertAt(corpusPartOne, 1);
+            //corpus.Add(corpusPartOne);
+            addCorpusPart(1, corpusPartOne);
+        }
         
     }
 }

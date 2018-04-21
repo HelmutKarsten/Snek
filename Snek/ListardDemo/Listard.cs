@@ -45,13 +45,13 @@ namespace ListardDemo
 
         // index based read access
         public T Get(int index) {
-            if (index < 0 || index >= count) throw new IndexOutOfRangeException();
+            //if (index < 0 || index >= count) throw new IndexOutOfRangeException();
             return this.values[index];
         }
 
         // index based write access
         public void Set(T value, int index) {
-            if (index < 0 || index >= count) throw new IndexOutOfRangeException();
+            //if (index < 0 || index >= count) throw new IndexOutOfRangeException();
             this.values[index] = value;
         }
 
@@ -62,7 +62,8 @@ namespace ListardDemo
 
         // insert multiple elements at the given index
         public void InsertAt(T[] values, int index) {
-            if (index < 0 || index > count) throw new IndexOutOfRangeException();
+            
+            //if (index < 0 || index >= count) throw new IndexOutOfRangeException();
             int shift = values.Length;
             GrowSize(Count + shift);
 

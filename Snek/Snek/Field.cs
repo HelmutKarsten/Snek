@@ -8,14 +8,12 @@ namespace Snek
 {
     class Field
     {
-        int consoleSizeX = 150;
-        int consoleSizeY = 70;
-        Snek sneki = new Snek();
+        int consoleSizeX = 150; //
+        int consoleSizeY = 70;  //
+        Snek sneki = new Snek(); //  //
 
         public void windowStart()
-        {
-            Food food = new Food(0);
-            
+        {            
             Console.Title = "SNEK";
             Console.SetWindowSize(consoleSizeX, consoleSizeY);
             Console.SetBufferSize(consoleSizeX, consoleSizeY);
