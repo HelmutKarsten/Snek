@@ -22,7 +22,6 @@ namespace Snek
         int  maxX, maxY;
 
         Boolean Lost = false;
-        Boolean growProcess = false;
 
         int[] coordinate = { 0, 0 };
         int[] FoodPosition;
@@ -138,7 +137,7 @@ namespace Snek
 
         public void moveSnakeForward()
         {
-            for (int i = smija.getSnakeLength(); i >= 0; i-- )
+            for (int i = smija.getSnakeLength() - 1; i >= 0; i-- )
             {
                 if (i == 0)
                 {
@@ -151,9 +150,13 @@ namespace Snek
                 {
                     coordinate = smija.getCorpusPart(i-1);
                     smija.setCorpusPart(i, smija.saveSnekLocation(coordinate[0], coordinate[1]));
-                    if (i != 1 && growProcess == false)
+                    if (i != 1)
                     {
                         checkForColision(smija.getCorpusPart(i));
+                    }
+                    if (Lost == true)
+                    {
+                        break;
                     }
 
                 }
@@ -173,7 +176,6 @@ namespace Snek
         public void letSnekGrow()
         {
             smija.letItGrow();
-            growProcess = true;
         }
 
         private void checkForColision(int[] corpusPart)

@@ -61,10 +61,10 @@ namespace Snek
 
         public void letItGrow()
         {
-            int[] corpusPartOne = getCorpusPart(0);
+            int corpusCount = corpus.getCount() - 1;
+            int[] lastCorpusPart = getCorpusPart(corpusCount);
             //corpus.InsertAt(corpusPartOne, 1);
-            //corpus.Add(corpusPartOne);
-            addCorpusPart(1, corpusPartOne);
+            corpus.Add(lastCorpusPart);
         }
         
     }

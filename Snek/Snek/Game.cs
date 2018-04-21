@@ -70,7 +70,7 @@ namespace Snek
                     drawSnek();
                     drawFood();
                     // Wait some time
-                    System.Threading.Thread.Sleep(speed);
+                    System.Threading.Thread.Sleep(speed/2);
                 }
             }
         }

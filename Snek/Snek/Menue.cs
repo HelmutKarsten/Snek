@@ -34,6 +34,7 @@ namespace Snek
                     else if (playGame)
                     {
                         Game game = new Game(10);
+                        game.windowStart();
                         game.runSnek();
                         playGame = false;
                     }

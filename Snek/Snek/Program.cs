@@ -10,9 +10,12 @@ namespace Snek
     {
         static void Main(string[] args)
         {
-            Game field = new Game(10);
-            field.windowStart();
-            field.runSnek();
+            //Game field = new Game(10);
+            //field.windowStart();
+            //field.runSnek();
+
+            Menue go = new Menue();
+            go.runMenue();
             
         }
     }
