@@ -43,13 +43,36 @@ namespace Snek
                     else if (changeDificulty)
                     {
                         Console.Clear();
-                        menueIterator(cki, menueDifficulty.Length);
-                        WriteMenueText(menueDifficulty);
+                        runDificultyMenue();
+                        changeDificulty = false;
                     }
                     else
                     {
                         Console.Clear();
                         WriteMenueText(menueText);
+                    }
+                }
+            }
+        }
+
+        private void runDificultyMenue ()
+        {
+            WriteMenueText(menueDifficulty);
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    Selection();
+                    menueIterator(cki, menueDifficulty.Length);
+                    if (exit)
+                    {
+                        exit = false;
+                        break;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        WriteMenueText(menueDifficulty);
                     }
                 }
             }
@@ -96,7 +119,7 @@ namespace Snek
 
             if (cki.Key == ConsoleKey.Enter)
             {
-                if (exit == false)
+                if (changeDificulty == false)
                 {
                     switch (menueItem)
                     {
@@ -105,13 +128,16 @@ namespace Snek
                             break;
                         case 2:
                             changeDificulty = true;
+                            menueItem = 0;
+                            Console.Clear();
+                            WriteMenueText(menueDifficulty);
                             break;
                         case 4:
                             exit = true;
                             break;
                     }
                 }
-                else if (exit == true)
+                else if (changeDificulty == true)
                 {
                     switch (menueItem)
                     {
@@ -128,7 +154,7 @@ namespace Snek
                             difficutlyOfGame = 10;
                             break;
                         case 4:
-                            exit = false;
+                            exit = true;
                             Console.Clear();
                             WriteMenueText(menueText);
                             break;
