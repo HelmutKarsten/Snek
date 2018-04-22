@@ -10,8 +10,10 @@ namespace Snek
     {
         ConsoleKeyInfo cki;
         int menueItem;
-        string[] menueText = { "Start Game", "Show Highscore", "About", "Exit" };
-        Boolean exit, playGame = false;
+        string[] menueText = { "Start Game", "Show Highscore", "Change Difficulty", "About", "Exit" };
+        string[] menueDifficulty = { "easy", "normal", "hard", "2 ez 4 rtz", "exit"};
+        Boolean exit, playGame, changeDificulty = false;
+        int difficutlyOfGame = 5;
 
         public Menue()
         {
@@ -20,28 +22,34 @@ namespace Snek
 
         public void runMenue()
         {
-            WriteMenueText();
+            WriteMenueText(menueText);
             while (true)
             {
                 if (Console.KeyAvailable)
                 {
                     Selection();
-                    menueIterator(cki);
+                    menueIterator(cki, menueText.Length);
                     if (exit)
                     {
                         break;
                     }
                     else if (playGame)
                     {
-                        Game game = new Game(10);
+                        Game game = new Game(difficutlyOfGame);
                         game.windowStart();
                         game.runSnek();
                         playGame = false;
                     }
+                    else if (changeDificulty)
+                    {
+                        Console.Clear();
+                        menueIterator(cki, menueDifficulty.Length);
+                        WriteMenueText(menueDifficulty);
+                    }
                     else
                     {
                         Console.Clear();
-                        WriteMenueText();
+                        WriteMenueText(menueText);
                     }
                 }
             }
@@ -52,56 +60,91 @@ namespace Snek
             cki = Console.ReadKey();
         }
 
-        private void WriteMenueText()
+        private void WriteMenueText(string[] menueInfo)
         {
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i <= menueInfo.Length - 1; i++)
             {
-                WriteSingleMenueItems(i);
+                WriteSingleMenueItems(i, menueInfo);
             }
         }
 
-        private void WriteSingleMenueItems(int iterator)
+        private void WriteSingleMenueItems(int iterator, string[] menueInfo)
         {
             if (iterator == menueItem)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
 
-            Console.WriteLine(menueText[iterator]);
+            Console.WriteLine(menueInfo[iterator]);
 
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        private void menueIterator(ConsoleKeyInfo cki)
+        private void menueIterator(ConsoleKeyInfo cki, int ArrayLength)
         {
             
             if (cki.Key == ConsoleKey.DownArrow)
             {
                 menueItem++;
-                checkForRimCase(1);
+                checkForRimCase(1, ArrayLength);
             }
             if (cki.Key == ConsoleKey.UpArrow)
             {
                 menueItem--;
-                checkForRimCase(0);
+                checkForRimCase(0, ArrayLength);
             }
-            if (cki.Key == ConsoleKey.Enter && menueItem == 3)
+
+            if (cki.Key == ConsoleKey.Enter)
             {
-                exit = true;
-            }
-            if (cki.Key == ConsoleKey.Enter && menueItem == 0)
-            {
-                playGame = true;
+                if (exit == false)
+                {
+                    switch (menueItem)
+                    {
+                        case 0:
+                            playGame = true;
+                            break;
+                        case 2:
+                            changeDificulty = true;
+                            break;
+                        case 4:
+                            exit = true;
+                            break;
+                    }
+                }
+                else if (exit == true)
+                {
+                    switch (menueItem)
+                    {
+                        case 0:
+                            difficutlyOfGame = 2;
+                            break;
+                        case 1:
+                            difficutlyOfGame = 5;
+                            break;
+                        case 2:
+                            difficutlyOfGame = 7;
+                            break;
+                        case 3:
+                            difficutlyOfGame = 10;
+                            break;
+                        case 4:
+                            exit = false;
+                            Console.Clear();
+                            WriteMenueText(menueText);
+                            break;
+                    }
+                }
+                
             }
         }
 
-        private void checkForRimCase(int TopBottom)
+        private void checkForRimCase(int TopBottom, int ArrayLength)
         {
             if (TopBottom == 0 && CompairTwoItems(0, menueItem))
             {
-                menueItem = 3;
+                menueItem = ArrayLength - 1;
             }
-            if (TopBottom == 1 && CompairTwoItems(menueItem, 3))
+            if (TopBottom == 1 && CompairTwoItems(menueItem, ArrayLength - 1))
             {
                 menueItem = 0;
             }
