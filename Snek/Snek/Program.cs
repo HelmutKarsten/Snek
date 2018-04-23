@@ -14,8 +14,12 @@ namespace Snek
             //field.windowStart();
             //field.runSnek();
 
-            Menue go = new Menue();
-            go.runMenue();
+            //Menue go = new Menue();
+            //go.runMenue();
+
+            string[] test = { "Hello", "Darkness", "My", "Old", "Friend" };
+            genericMenue MenueTest = new genericMenue(test);
+            MenueTest.runMenue();
             
         }
     }

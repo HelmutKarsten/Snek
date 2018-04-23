@@ -44,6 +44,7 @@
     <Compile Include="Field.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="genericMenue.cs" />
     <Compile Include="Menue.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Program.cs" />
