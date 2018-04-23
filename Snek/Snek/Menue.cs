@@ -8,10 +8,12 @@ namespace Snek
 {
     class Menue
     {
+        genericMenue MainMenue = new genericMenue(menueText);
+        genericMenue DifficultyMenue = new genericMenue(menueDifficulty);
         ConsoleKeyInfo cki;
         int menueItem;
-        string[] menueText = { "Start Game", "Show Highscore", "Change Difficulty", "About", "Exit" };
-        string[] menueDifficulty = { "easy", "normal", "hard", "2 ez 4 rtz", "exit"};
+        static string[] menueText = { "Start Game", "Show Highscore", "Change Difficulty", "About", "Exit" };
+        static string[] menueDifficulty = { "easy", "normal", "hard", "2 ez 4 rtz", "exit"};
         Boolean exit, playGame, changeDificulty = false;
         int difficutlyOfGame = 5;
 
@@ -22,13 +24,13 @@ namespace Snek
 
         public void runMenue()
         {
-            WriteMenueText(menueText);
+            MainMenue.runMenue();
             while (true)
             {
                 if (Console.KeyAvailable)
                 {
                     Selection();
-                    menueIterator(cki, menueText.Length);
+                    MainMenueIterator(cki);
                     if (exit)
                     {
                         break;
@@ -42,37 +44,32 @@ namespace Snek
                     }
                     else if (changeDificulty)
                     {
-                        Console.Clear();
-                        runDificultyMenue();
-                        changeDificulty = false;
+                        DifficultyMenue.runMenue();
+                        while (true)
+                        {
+                            if (Console.KeyAvailable)
+                            {
+                                Selection();
+                                DifficultyMenueIterator(cki);
+                                if (exit)
+                                {
+                                    changeDificulty = false;
+                                    exit = false;
+                                    Console.Clear();
+                                    break;
+                                }
+                                else
+                                {
+                                    DifficultyMenue.runMenue();
+                                }
+                            }
+                        }
+                        
                     }
                     else
                     {
-                        Console.Clear();
-                        WriteMenueText(menueText);
-                    }
-                }
-            }
-        }
-
-        private void runDificultyMenue ()
-        {
-            WriteMenueText(menueDifficulty);
-            while (true)
-            {
-                if (Console.KeyAvailable)
-                {
-                    Selection();
-                    menueIterator(cki, menueDifficulty.Length);
-                    if (exit)
-                    {
-                        exit = false;
-                        break;
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        WriteMenueText(menueDifficulty);
+                        //WriteMenueText(menueText);
+                        MainMenue.runMenue();
                     }
                 }
             }
@@ -103,64 +100,65 @@ namespace Snek
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        private void menueIterator(ConsoleKeyInfo cki, int ArrayLength)
+        private void MainMenueIterator(ConsoleKeyInfo cki)
         {
-            
-            if (cki.Key == ConsoleKey.DownArrow)
-            {
-                menueItem++;
-                checkForRimCase(1, ArrayLength);
+
+            UpDownMechanics(cki, MainMenue);
+
+            if (cki.Key == ConsoleKey.Enter)
+            {  
+                switch (MainMenue.GetIterator())
+                {
+                    case 0:
+                        playGame = true;
+                        break;
+                    case 2:
+                        changeDificulty = true;
+                        break;
+                    case 4:
+                        exit = true;
+                        break;
+                }
             }
-            if (cki.Key == ConsoleKey.UpArrow)
-            {
-                menueItem--;
-                checkForRimCase(0, ArrayLength);
-            }
+        }
+
+        private void DifficultyMenueIterator(ConsoleKeyInfo cki)
+        {
+            UpDownMechanics(cki, DifficultyMenue);
 
             if (cki.Key == ConsoleKey.Enter)
             {
-                if (changeDificulty == false)
+                exit = true;
+                switch (DifficultyMenue.GetIterator())
                 {
-                    switch (menueItem)
-                    {
-                        case 0:
-                            playGame = true;
-                            break;
-                        case 2:
-                            changeDificulty = true;
-                            menueItem = 0;
-                            Console.Clear();
-                            WriteMenueText(menueDifficulty);
-                            break;
-                        case 4:
-                            exit = true;
-                            break;
-                    }
+                    case 0:
+                        difficutlyOfGame = 2;
+                        break;
+                    case 1:
+                        difficutlyOfGame = 5;
+                        break;
+                    case 2:
+                        difficutlyOfGame = 7;
+                        break;
+                    case 3:
+                        difficutlyOfGame = 10;
+                        break;
+                    case 4:
+                        exit = true;
+                        break;
                 }
-                else if (changeDificulty == true)
-                {
-                    switch (menueItem)
-                    {
-                        case 0:
-                            difficutlyOfGame = 2;
-                            break;
-                        case 1:
-                            difficutlyOfGame = 5;
-                            break;
-                        case 2:
-                            difficutlyOfGame = 7;
-                            break;
-                        case 3:
-                            difficutlyOfGame = 10;
-                            break;
-                        case 4:
-                            exit = true;
-                            Console.Clear();
-                            WriteMenueText(menueText);
-                            break;
-                    }
-                }
-                
+            }
+        }
+
+        private void UpDownMechanics(ConsoleKeyInfo cki, genericMenue Menue)
+        {
+            if (cki.Key == ConsoleKey.DownArrow)
+            {
+                Menue.AddToIterator();
+            }
+            if (cki.Key == ConsoleKey.UpArrow)
+            {
+                Menue.SubstractFromIterator();
             }
         }
 

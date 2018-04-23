@@ -21,14 +21,33 @@ namespace Snek
 
         public void runMenue()
         {
+            Console.Clear();
             WriteMenueText();
-            Console.ReadKey();
         }
+
+        public void AddToIterator()
+        {
+            Iterator++;
+            CheckRimCaseBottom(NumberOfMenueItems - 1, Iterator);
+        }
+
+        public void SubstractFromIterator()
+        {
+            Iterator--;
+            CheckRimCaseTop(Iterator);
+        }
+
+        public int GetIterator()
+        {
+            return Iterator;
+        }
+
 
         private void WriteSingleMenueItem(string menueItem, ConsoleColor consoleColor)
         {
             Console.BackgroundColor = consoleColor;
             Console.WriteLine(menueItem);
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         private void WriteMenueText()
@@ -46,30 +65,13 @@ namespace Snek
             }
         }
 
-        private void menueIterator(ConsoleKeyInfo cki, int ArrayLength)
+        // --- Rim Cases --- //
+
+        private void CheckRimCaseTop(int IteratingInt)
         {
-
-            if (cki.Key == ConsoleKey.DownArrow)
+            if (CompareTwoIntegers(0, IteratingInt))
             {
-                Iterator++;
-                CheckRimCaseBottom(NumberOfMenueItems, Iterator);
-            }
-            if (cki.Key == ConsoleKey.UpArrow)
-            {
-                Iterator--;
-                CheckRimCaseTop(0, Iterator);
-            }
-
-            if (cki.Key == ConsoleKey.Enter)
-            {
-            }
-        }
-
-        private void CheckRimCaseTop(int RimCase, int IteratingInt)
-        {
-            if (CompareTwoIntegers(RimCase, IteratingInt))
-            {
-                Iterator = NumberOfMenueItems;
+                Iterator = NumberOfMenueItems - 1;
             }
         }
 
@@ -90,5 +92,7 @@ namespace Snek
 
             return false;
         }
+
+        // --- Rim Cases --- //
     }
 }
