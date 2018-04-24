@@ -40,6 +40,11 @@ namespace Snek
                         Game game = new Game(difficutlyOfGame);
                         game.windowStart();
                         game.runSnek();
+                        Console.Clear();
+                        string txt = "U Died";
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        WriteSingleMenueItems("U Died");
+                        Console.ReadKey();
                         playGame = false;
                     }
                     else if (changeDificulty)
@@ -80,22 +85,15 @@ namespace Snek
             cki = Console.ReadKey();
         }
 
-        private void WriteMenueText(string[] menueInfo)
-        {
-            for(int i = 0; i <= menueInfo.Length - 1; i++)
-            {
-                WriteSingleMenueItems(i, menueInfo);
-            }
-        }
+       
 
-        private void WriteSingleMenueItems(int iterator, string[] menueInfo)
+        private void WriteSingleMenueItems(string menueInfo)
         {
-            if (iterator == menueItem)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-            }
 
-            Console.WriteLine(menueInfo[iterator]);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.WriteLine(menueInfo);
 
             Console.BackgroundColor = ConsoleColor.Black;
         }

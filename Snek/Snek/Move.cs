@@ -187,6 +187,11 @@ namespace Snek
             }
         }
 
+        public int getScoreFactorOfFood() 
+        {
+            return pischja.getScoreFactor(0);
+        }
+
         public int[] getFoodPosition()
         {
 

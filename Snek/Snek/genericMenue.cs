@@ -46,6 +46,7 @@ namespace Snek
         private void WriteSingleMenueItem(string menueItem, ConsoleColor consoleColor)
         {
             Console.BackgroundColor = consoleColor;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(menueItem);
             Console.BackgroundColor = ConsoleColor.Black;
         }

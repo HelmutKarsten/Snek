@@ -12,6 +12,7 @@ namespace Snek
         static int consoleSizeX = 100;
         static int consoleSizeY = 50;
 
+        int score;
         int speed;
 
         Move Snek = new Move(consoleSizeX - 1, consoleSizeY - 1);
@@ -64,13 +65,14 @@ namespace Snek
                     // No user input - the gaming loop does a time step
 
                     // Move according to the currrent user symbol speed
-                    Console.Clear();
+                    //Console.Clear();
                     Snek.moveSnakeForward();
                     checkSnekFoodRelation();
                     drawSnek();
                     drawFood();
+                    drawScore();
                     // Wait some time
-                    System.Threading.Thread.Sleep(speed/2);
+                    System.Threading.Thread.Sleep(speed/3);
                 }
             }
         }
@@ -110,7 +112,7 @@ namespace Snek
             speed = (11 - difficultyLevel) * 100;
         }
 
-        public void ShowSymbol(char symbol, int x, int y, ConsoleColor color) // diese funktionen sind kackendreist kopiert
+        public void ShowSymbol(char symbol, int x, int y, ConsoleColor color) 
         {
             // Remember current state
             int memX = Console.CursorLeft;
@@ -120,12 +122,12 @@ namespace Snek
             ShowText(symbol, x, y, color);
 
             // Restore remembered state
-            Console.CursorLeft = memX;
-            Console.CursorTop = memY;
+            Console.CursorLeft = 0;
+            Console.CursorTop = 0;
             Console.ForegroundColor = memColor;
         }
 
-        private static void ShowText(char text, int x, int y, ConsoleColor color) // diese funktionen sind kackendreist kopiert
+        private static void ShowText(char text, int x, int y, ConsoleColor color) 
         {
             // Show symbol regarding its paramters
             Console.CursorLeft = x;
@@ -146,11 +148,16 @@ namespace Snek
                 {
                     ShowSymbol('O', tupel[0], tupel[1], ConsoleColor.Black);
                 }
-                else
+                if (i == 1)
                 {
                     ShowSymbol('X', tupel[0], tupel[1], ConsoleColor.Black);
                 }
+                if (i == Snek.getLengthOfSnake() -1)
+                {
+                    ShowSymbol(' ', tupel[0], tupel[1], ConsoleColor.White);
+                }
 
+                continue;
             }
         }
 
@@ -158,6 +165,24 @@ namespace Snek
         {
             int[] FoodParticle = Snek.getFoodPosition();
             ShowSymbol('#', FoodParticle[0], FoodParticle[1], ConsoleColor.Black);
+        }
+
+        private void drawScore()
+        {
+            string StringScore = score.ToString();
+            for (int i = 0; i < StringScore.Length; i++)
+            {
+                ShowText(StringScore[i], 0 + i, 0, ConsoleColor.Black);
+            }
+        }
+
+        private int calculateScore(int intScore)
+        {
+            int FoodScore = Snek.getScoreFactorOfFood();
+            int SpeedFactor = speed / 10;
+
+            intScore = intScore + FoodScore * SpeedFactor;
+            return intScore;
         }
 
         private void checkSnekFoodRelation()
@@ -168,6 +193,7 @@ namespace Snek
             {
                 Snek.letSnekGrow();
                 Snek.setFoodPosition();
+                score = calculateScore(score);
             }
         }
     }
