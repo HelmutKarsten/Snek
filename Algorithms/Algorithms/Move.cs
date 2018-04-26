@@ -8,19 +8,13 @@ namespace Algorithms
 {
     class Move
     {
-
-        enum direction
+        private enum direction
         {
-            up,
-            down,
-            left,
-            right
+            up, down, left, right
         }
-
-        direction directionOfSnek;
-
-        int maxX, maxY;
-
+        private direction directionOfSnek;
+        private int maxX;
+        private int maxY;
         int[] coordinate = { 0, 0 };
 
         public Move(int max_X, int max_Y)
@@ -31,34 +25,24 @@ namespace Algorithms
             maxX = max_X;
             maxY = max_Y;
         }
-
         public void changeCoordinates()
         {
             switch (directionOfSnek)
             {
                 case direction.up:
-                    {
                         coordinate[1] = coordinate[1] - 1;
                         break;
-                    }
                 case direction.down:
-                    {
                         coordinate[1] = coordinate[1] + 1;
                         break;
-                    }
                 case direction.right:
-                    {
                         coordinate[0] = coordinate[0] + 1;
                         break;
-                    }
                 case direction.left:
-                    {
                         coordinate[0] = coordinate[0] - 1;
                         break;
-                    }
             }
         }
-
         public void changeCoordinatesAtRim()
         {
             if (coordinate[0] == maxX)
@@ -78,12 +62,13 @@ namespace Algorithms
                 coordinate[1] = maxY;
             }
         }
-
-        public int[] getCoordinate()
+        public int[] getCoordinate
         {
-            return coordinate;
+            get
+            {
+                return coordinate;
+            }
         }
-
         public void validateDirection(int newDirection)
         {
             if (valUpDownDirection(directionOfSnek) && valLeftRightDirection((direction)newDirection) || valLeftRightDirection(directionOfSnek) && valUpDownDirection((direction)newDirection))
@@ -91,7 +76,6 @@ namespace Algorithms
                 changeDirection(newDirection);
             }
         }
-
         private void changeDirection(int newDirection)
         {
             if (newDirection >= 0 && newDirection <= 3)
@@ -99,31 +83,14 @@ namespace Algorithms
                 directionOfSnek = (direction)newDirection;
             }
         }
-
         //validators
-        private Boolean valUpDownDirection(direction Dir)
+        private bool valUpDownDirection(direction Dir)
         {
-            if (Dir == direction.up || Dir == direction.down)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Dir == direction.up || Dir == direction.down);
         }
-
-        private Boolean valLeftRightDirection(direction Dir)
+        private bool valLeftRightDirection(direction Dir)
         {
-            if (Dir == direction.left || Dir == direction.right)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Dir == direction.left || Dir == direction.right);
         }
-
     }
 }
